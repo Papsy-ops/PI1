@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "start": "node server.js",
+    "test": "echo \"No tests defined\" && exit 0"
   },
   "keywords": [],
   "author": "",
