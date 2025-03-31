@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'curl -fsSL https://deb.nodesource.com/setup_18.x | bash -' // Install Node.js
+                //sh 'curl -fsSL https://deb.nodesource.com/setup_18.x | bash -' // Install Node.js
                 //sh 'apt-get install -y nodejs' // Install npm
                 //sh '/usr/bin/npm install'
             }
