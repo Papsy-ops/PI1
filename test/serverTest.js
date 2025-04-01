@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'test';   
 
-import chai from 'chai';
+import * as chai from 'chai';
 import chaiHttp from 'chai-http';
 
 chai.use(chaiHttp);
