@@ -1,27 +1,26 @@
-process.env.NODE_ENV = 'test';   
+let chai, chaiHttp;
 
-import * as chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from '../server';
+(async () => {
+  chai = (await import('chai')).default;
+  chaiHttp = (await import('chai-http')).default;
 
-chai.use(chaiHttp);
+  chai.use(chaiHttp);
 
+  var server = require('../server');
+  var should = chai.should();
+  var expect = chai.expect;
 
-var should = chai.should();
-var expect = chai.expect;
-
-describe('Photos', function(){
-
-
-    it('should list ALL photos on / GET', function(done){
-        this.timeout(60000);
-        chai.request(server)
+  describe('Photos', function() {
+    it('should list ALL photos on / GET', function(done) {
+      this.timeout(60000);
+      chai.request(server)
         .get('/')
-        .end(function(err,res){
-            res.should.have.status(200);
-            res.should.be.html;
-            res.body.should.be.a('object')
-            done();
-        })
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.should.be.html;
+          res.body.should.be.a('object');
+          done();
+        });
     });
-})
+  });
+})();
