@@ -1,15 +1,13 @@
 process.env.NODE_ENV = 'test';   
 
-const chai = require('chai');
-const chaiHttp = require('chai-http');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
 
-
+chai.use(chaiHttp);
 
 var server = require('../server');
 var should = chai.should();
 var expect = chai.expect;
-
-chai.use(chaiHttp);
 
 describe('Photos', function(){
 
