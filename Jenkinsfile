@@ -21,14 +21,28 @@ pipeline {
 
         stage('Deploy to Render') {
             steps {
-                sh 'node server.js'
+                sh 'nohup node server.js > output.log 2>&1 &'
             }
         }
     }
 
     post {
+        success {
+            script {
+                emailext subject: 'Deployment Successful',
+                    body: "The deployment of the project was successful!",
+                    to: 'papetua.narina@student.moringaschool.com',
+                    from: 'papetua.narina@student.moringaschool.com'
+            }
+        }
+
         failure {
-            echo 'Deployment Failed. Check logs!'
+            script {
+                emailext subject: 'Deployment Failed',
+                    body: "The deployment of the project failed. Check Jenkins logs for details.",
+                    to: 'papetua.narina@student.moringaschool.com',
+                    from: 'papetua.narina@student.moringaschool.com'
+            }
         }
     }
 }
