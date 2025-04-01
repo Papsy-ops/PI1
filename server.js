@@ -1,8 +1,8 @@
-import express from 'express'; // Use import since you're using ES modules
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import path from 'path';
-import config from './_config';  // Your custom config
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require('path');
+const config = require('./_config');
 
 // Define routes
 let index = require('./routes/index');
@@ -15,14 +15,14 @@ const app = express();
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://papetuanarina:FMySwBDqf2O93rar@ip1.90y7ear.mongodb.net/darkroom-dev?retryWrites=true&w=majority";
 
 // Define an async function to connect to MongoDB
-const connectToDatabase = async () => {
+async function connectToDatabase() {
   try {
     await mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log(`Connected to Database: ${MONGODB_URI}`);
   } catch (err) {
     console.error('Error connecting to MongoDB:', err);
   }
-};
+}
 
 // Call the function to connect to the database
 connectToDatabase();
