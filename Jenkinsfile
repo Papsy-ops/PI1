@@ -31,8 +31,4 @@ pipeline {
             echo 'Deployment Failed. Check logs!'
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
